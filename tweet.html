@@ -57,25 +57,35 @@
             justify-content: space-between;
             color: #657786;
         }
-        .interaction {
-            margin: 0 5px;
-            cursor: pointer;
+        .reply {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .reply img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .reply-content {
+            flex: 1;
+        }
+        .reply-content .name {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="tweetDetails"></div>
+        <div id="tweet-details"></div>
+        <div id="replies"></div>
+        <div id="reply-box">
+            <input type="text" id="reply-input" placeholder="Enter your reply">
+            <button onclick="postReply()">Reply</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Extract tweet ID from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const tweetId = parseInt(urlParams.get('id'), 10);
-
-        // Show tweet details
-        showTweetDetails(tweetId);
-    </script>
 </body>
 </html>

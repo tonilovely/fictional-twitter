@@ -89,65 +89,68 @@
     </div>
 
     <script>
-        function generateTweet() {
-            const tweets = [
-                {
-                    name: "Hanna Marin",
-                    username: "@HannaM",
-                    text: "Just got a new pair of shoes!",
-                    date: "September 1, 2010",
-                    profilePic: "path/to/hanna.jpg",
-                    replies: Math.floor(Math.random() * 100),
-                    retweets: Math.floor(Math.random() * 100),
-                    likes: Math.floor(Math.random() * 100)
-                },
-                {
-                    name: "Spencer Hastings",
-                    username: "@SpencerH",
-                    text: "Busy with my school projects.",
-                    date: "September 1, 2010",
-                    profilePic: "path/to/spencer.jpg",
-                    replies: Math.floor(Math.random() * 100),
-                    retweets: Math.floor(Math.random() * 100),
-                    likes: Math.floor(Math.random() * 100)
-                },
-                {
-                    name: "Emily Fields",
-                    username: "@EmilyF",
-                    text: "Feeling nostalgic today.",
-                    date: "September 1, 2010",
-                    profilePic: "path/to/emily.jpg",
-                    replies: Math.floor(Math.random() * 100),
-                    retweets: Math.floor(Math.random() * 100),
-                    likes: Math.floor(Math.random() * 100)
-                },
-                {
-                    name: "Aria Montgomery",
-                    username: "@AriaM",
-                    text: "Reading a new book.",
-                    date: "September 1, 2010",
-                    profilePic: "path/to/aria.jpg",
-                    replies: Math.floor(Math.random() * 100),
-                    retweets: Math.floor(Math.random() * 100),
-                    likes: Math.floor(Math.random() * 100)
-                }
-            ];
+    function generateTweet() {
+        const tweets = [
+            {
+                name: "Hanna Marin",
+                username: "@HannaM",
+                text: "Just got a new pair of shoes!",
+                profilePic: "path/to/hanna.jpg",
+                replies: Math.floor(Math.random() * 100),
+                retweets: Math.floor(Math.random() * 100),
+                likes: Math.floor(Math.random() * 100)
+            },
+            {
+                name: "Spencer Hastings",
+                username: "@SpencerH",
+                text: "Busy with my school projects.",
+                profilePic: "path/to/spencer.jpg",
+                replies: Math.floor(Math.random() * 100),
+                retweets: Math.floor(Math.random() * 100),
+                likes: Math.floor(Math.random() * 100)
+            },
+            {
+                name: "Emily Fields",
+                username: "@EmilyF",
+                text: "Feeling nostalgic today.",
+                profilePic: "path/to/emily.jpg",
+                replies: Math.floor(Math.random() * 100),
+                retweets: Math.floor(Math.random() * 100),
+                likes: Math.floor(Math.random() * 100)
+            },
+            {
+                name: "Aria Montgomery",
+                username: "@AriaM",
+                text: "Reading a new book.",
+                profilePic: "path/to/aria.jpg",
+                replies: Math.floor(Math.random() * 100),
+                retweets: Math.floor(Math.random() * 100),
+                likes: Math.floor(Math.random() * 100)
+            }
+        ];
 
-            const tweet = tweets[Math.floor(Math.random() * tweets.length)];
-            const tweetTemplate = document.getElementById('tweet-template');
-            const newTweet = tweetTemplate.cloneNode(true);
-            newTweet.style.display = "block";
-            newTweet.querySelector('.profile-pic img').src = tweet.profilePic;
-            newTweet.querySelector('.name').innerText = tweet.name;
-            newTweet.querySelector('.username').innerText = tweet.username;
-            newTweet.querySelector('.date').innerText = tweet.date;
-            newTweet.querySelector('.tweet-text').innerText = tweet.text;
-            newTweet.querySelector('.replies').innerText = tweet.replies;
-            newTweet.querySelector('.retweets').innerText = tweet.retweets;
-            newTweet.querySelector('.likes').innerText = tweet.likes;
+        const tweet = tweets[Math.floor(Math.random() * tweets.length)];
 
-            document.getElementById('tweets').appendChild(newTweet);
-        }
-    </script>
+        const date = new Date();
+        date.setDate(date.getDate() - Math.floor(Math.random() * 30));
+        date.setHours(Math.floor(Math.random() * 24));
+        date.setMinutes(Math.floor(Math.random() * 60));
+
+        const tweetTemplate = document.getElementById('tweet-template');
+        const newTweet = tweetTemplate.cloneNode(true);
+        newTweet.style.display = "block";
+        newTweet.querySelector('.profile-pic img').src = tweet.profilePic;
+        newTweet.querySelector('.name').innerText = tweet.name;
+        newTweet.querySelector('.username').innerText = tweet.username;
+        newTweet.querySelector('.date').innerText = date.toLocaleString();
+        newTweet.querySelector('.tweet-text').innerText = tweet.text;
+        newTweet.querySelector('.replies').innerText = tweet.replies;
+        newTweet.querySelector('.retweets').innerText = tweet.retweets;
+        newTweet.querySelector('.likes').innerText = tweet.likes;
+        newTweet.querySelector('.profile-link').href = "profile.html";
+
+        document.getElementById('tweets').appendChild(newTweet);
+    }
+</script>
 </body>
 </html>

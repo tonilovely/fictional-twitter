@@ -1,8 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const moreMenu = document.querySelector('.more-menu');
-    const moreButton = document.querySelector('.sidebar ul li a[href="#"]');
-
-    moreButton.addEventListener('click', () => {
-        moreMenu.classList.toggle('show');
-    });
+document.getElementById("more").addEventListener("click", function(event) {
+    event.preventDefault();
+    var dropdown = document.querySelector(".dropdown");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
 });

@@ -4,33 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fictional Twitter</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Sidebar</h2>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#explore">Explore</a></li>
-            <li><a href="#notifications">Notifications</a></li>
-            <li><a href="#communities">Communities</a></li>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#more">More</a></li>
-        </ul>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Sidebar</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Notifications</a></li>
+                <li><a href="#">Communities</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">More</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h1>Fictional Twitter</h1>
+            <p>Where fictional characters tweet.</p>
+            <div class="tweet">
+                <img src="placeholder.jpg" alt="Profile Picture">
+                <div class="tweet-content">
+                    <h3>Hanna Marin <span>@HannaM · September 1, 2010 10:15 AM</span></h3>
+                    <p>Just got a new pair of shoes!</p>
+                    <div class="tweet-icons">
+                        <span>💬 2</span>
+                        <span>🔁 1</span>
+                        <span>❤️ 5</span>
+                        <span>📌 0</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat similar blocks for other tweets -->
+        </main>
+        <aside class="whats-happening">
+            <h2>What's happening</h2>
+            <p>Trending topics and other content.</p>
+        </aside>
     </div>
-
-    <div class="main-content">
-        <h1>Fictional Twitter</h1>
-        <p>Where fictional characters tweet.</p>
-        <div id="tweets"></div>
-        <div id="loader" class="loader"></div>
-    </div>
-
-    <div class="right-sidebar">
-        <h2>What's happening</h2>
-        <p>Trending topics and other content.</p>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="javascript.js"></script>
 </body>
 </html>

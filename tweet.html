@@ -57,114 +57,25 @@
             justify-content: space-between;
             color: #657786;
         }
-        .interactions {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
         .interaction {
+            margin: 0 5px;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="tweetDetails" class="tweet"></div>
-        <div class="interactions">
-            <div class="interaction" id="likeTweet">❤️ Like</div>
-            <div class="interaction" id="retweetTweet">🔁 Retweet</div>
-            <div class="interaction" id="replyTweet">💬 Reply</div>
-        </div>
-        <div id="replies"></div>
+        <div id="tweetDetails"></div>
     </div>
 
+    <script src="script.js"></script>
     <script>
-        const tweetId = new URLSearchParams(window.location.search).get('id');
+        // Extract tweet ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tweetId = parseInt(urlParams.get('id'), 10);
 
-        const tweets = [
-            {
-                id: 1,
-                name: "Hanna Marin",
-                username: "@HannaM",
-                text: "Just got a new pair of shoes!",
-                profilePic: "https://via.placeholder.com/50",
-                date: "September 1, 2010 10:15 AM",
-                replies: 2,
-                retweets: 1,
-                likes: 5,
-                comments: [
-                    { user: "Emily Fields", text: "Nice shoes!" },
-                    { user: "Spencer Hastings", text: "Where did you get them?" }
-                ]
-            },
-            // Add other tweets here
-        ];
-
-        const tweet = tweets.find(t => t.id == tweetId);
-        if (tweet) {
-            const tweetDetails = document.getElementById('tweetDetails');
-            tweetDetails.innerHTML = `
-                <div class="profile-pic">
-                    <img src="${tweet.profilePic}" alt="${tweet.name}">
-                </div>
-                <div class="tweet-content">
-                    <div class="tweet-header">
-                        <h3 class="name">${tweet.name}</h3>
-                        <span class="username">${tweet.username}</span>
-                        <span class="date">${tweet.date}</span>
-                    </div>
-                    <p class="tweet-text">${tweet.text}</p>
-                    <div class="tweet-footer">
-                        💬 <span class="replies">${tweet.replies}</span>
-                        🔁 <span class="retweets">${tweet.retweets}</span>
-                        ❤️ <span class="likes">${tweet.likes}</span>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('likeTweet').onclick = () => {
-                tweet.likes++;
-                document.querySelector('.likes').innerText = tweet.likes;
-            };
-
-            document.getElementById('retweetTweet').onclick = () => {
-                tweet.retweets++;
-                document.querySelector('.retweets').innerText = tweet.retweets;
-            };
-
-            document.getElementById('replyTweet').onclick = () => {
-                const replyText = prompt('Enter your reply:');
-                if (replyText) {
-                    tweet.replies++;
-                    document.querySelector('.replies').innerText = tweet.replies;
-                    tweet.comments.push({ user: "You", text: replyText });
-                    loadReplies();
-                }
-            };
-
-            function loadReplies() {
-                const repliesContainer = document.getElementById('replies');
-                repliesContainer.innerHTML = '';
-                tweet.comments.forEach(comment => {
-                    const commentDiv = document.createElement('div');
-                    commentDiv.className = 'tweet';
-                    commentDiv.innerHTML = `
-                        <div class="profile-pic">
-                            <img src="https://via.placeholder.com/50" alt="${comment.user}">
-                        </div>
-                        <div class="tweet-content">
-                            <div class="tweet-header">
-                                <h3 class="name">${comment.user}</h3>
-                            </div>
-                            <p class="tweet-text">${comment.text}</p>
-                        </div>
-                    `;
-                    repliesContainer.appendChild(commentDiv);
-                });
-            }
-
-            loadReplies();
-        }
+        // Show tweet details
+        showTweetDetails(tweetId);
     </script>
 </body>
 </html>

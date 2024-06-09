@@ -3,65 +3,65 @@
 <head>
     <title>Fictional Twitter</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #e6ecf0;
-        margin: 0;
-        padding: 20px;
-    }
-    .container {
-        max-width: 600px;
-        margin: auto;
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-        color: #1da1f2;
-        text-align: center;
-    }
-    .tweet {
-        display: flex;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-    }
-    .profile-pic {
-        margin-right: 10px;
-    }
-    .profile-pic img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-    }
-    .tweet-content {
-        flex: 1;
-    }
-    .tweet-header {
-        display: flex;
-        align-items: center;
-    }
-    .tweet-header .name {
-        margin: 0;
-        margin-right: 5px;
-        font-weight: bold;
-    }
-    .tweet-header .username, .tweet-header .date {
-        color: #657786;
-        margin-left: 5px;
-    }
-    .tweet-text {
-        margin: 5px 0;
-    }
-    .tweet-footer {
-        display: flex;
-        justify-content: space-between;
-        color: #657786;
-    }
-</style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6ecf0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1da1f2;
+            text-align: center;
+        }
+        .tweet {
+            display: flex;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .profile-pic {
+            margin-right: 10px;
+        }
+        .profile-pic img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .tweet-content {
+            flex: 1;
+        }
+        .tweet-header {
+            display: flex;
+            align-items: center;
+        }
+        .tweet-header .name {
+            margin: 0;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        .tweet-header .username, .tweet-header .date {
+            color: #657786;
+            margin-left: 5px;
+        }
+        .tweet-text {
+            margin: 5px 0;
+        }
+        .tweet-footer {
+            display: flex;
+            justify-content: space-between;
+            color: #657786;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -78,8 +78,7 @@
                 name: "Hanna Marin",
                 username: "@HannaM",
                 text: "Just got a new pair of shoes!",
-                profilePic: "path/to/hanna.jpg",
-                date: "September 1, 2010",
+                profilePic: "https://via.placeholder.com/50",
                 replies: Math.floor(Math.random() * 100),
                 retweets: Math.floor(Math.random() * 100),
                 likes: Math.floor(Math.random() * 100)
@@ -88,8 +87,7 @@
                 name: "Spencer Hastings",
                 username: "@SpencerH",
                 text: "Busy with my school projects.",
-                profilePic: "path/to/spencer.jpg",
-                date: "September 1, 2010",
+                profilePic: "https://via.placeholder.com/50",
                 replies: Math.floor(Math.random() * 100),
                 retweets: Math.floor(Math.random() * 100),
                 likes: Math.floor(Math.random() * 100)
@@ -98,8 +96,7 @@
                 name: "Emily Fields",
                 username: "@EmilyF",
                 text: "Feeling nostalgic today.",
-                profilePic: "path/to/emily.jpg",
-                date: "September 1, 2010",
+                profilePic: "https://via.placeholder.com/50",
                 replies: Math.floor(Math.random() * 100),
                 retweets: Math.floor(Math.random() * 100),
                 likes: Math.floor(Math.random() * 100)
@@ -108,8 +105,7 @@
                 name: "Aria Montgomery",
                 username: "@AriaM",
                 text: "Reading a new book.",
-                profilePic: "path/to/aria.jpg",
-                date: "September 1, 2010",
+                profilePic: "https://via.placeholder.com/50",
                 replies: Math.floor(Math.random() * 100),
                 retweets: Math.floor(Math.random() * 100),
                 likes: Math.floor(Math.random() * 100)
@@ -117,6 +113,25 @@
         ];
 
         let tweetIndex = 0;
+
+        function generateRandomDate() {
+            const start = new Date(2006, 10, 1); // November 1, 2006
+            const end = new Date();
+            const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+            return date;
+        }
+
+        function formatDate(date) {
+            const options = {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            };
+            return date.toLocaleString('en-US', options);
+        }
 
         function loadTweets() {
             const container = document.getElementById('tweets');
@@ -147,7 +162,7 @@
                 username.innerText = tweet.username;
                 const date = document.createElement('span');
                 date.className = 'date';
-                date.innerText = tweet.date;
+                date.innerText = formatDate(generateRandomDate());
                 tweetHeader.appendChild(name);
                 tweetHeader.appendChild(username);
                 tweetHeader.appendChild(date);

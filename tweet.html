@@ -57,12 +57,9 @@
             justify-content: space-between;
             color: #657786;
         }
-        .replies {
-            margin-top: 20px;
-        }
         .reply {
             display: flex;
-            background-color: #fff;
+            background-color: #f5f8fa;
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 10px;
@@ -73,9 +70,10 @@
 <body>
     <div class="container">
         <div id="tweet"></div>
-        <div id="replies" class="replies"></div>
-        <div id="replyBox">
-            <input type="text" id="replyText" placeholder="Enter your reply" />
+        <div id="replies"></div>
+
+        <div>
+            <input type="text" id="replyText" placeholder="Enter your reply">
             <button onclick="postReply()">Reply</button>
         </div>
     </div>

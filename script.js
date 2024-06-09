@@ -6,37 +6,37 @@ const tweets = [
         text: "Just got a new pair of shoes!",
         profilePic: "https://via.placeholder.com/50",
         date: "September 1, 2010 10:15 AM",
-        replies: 2,
+        replies: [
+            { name: "Emily Fields", username: "@EmilyF", text: "Nice shoes!", profilePic: "https://via.placeholder.com/50", date: "September 1, 2010 10:30 AM", likes: 1 },
+            { name: "Spencer Hastings", username: "@SpencerH", text: "Where did you get them?", profilePic: "https://via.placeholder.com/50", date: "September 1, 2010 10:45 AM", likes: 1 }
+        ],
         retweets: 1,
         likes: 5,
-        bookmarks: 0,
-        replyIds: [2, 3]
+        bookmarks: 0
     },
     {
         id: 2,
-        name: "Emily Fields",
-        username: "@EmilyF",
-        text: "Nice shoes!",
+        name: "Spencer Hastings",
+        username: "@SpencerH",
+        text: "Busy with my school projects.",
         profilePic: "https://via.placeholder.com/50",
-        date: "September 1, 2010 10:30 AM",
-        replies: 0,
+        date: "September 2, 2010 2:30 PM",
+        replies: [],
         retweets: 0,
-        likes: 1,
-        bookmarks: 0,
-        replyIds: []
+        likes: 3,
+        bookmarks: 0
     },
     {
         id: 3,
-        name: "Spencer Hastings",
-        username: "@SpencerH",
-        text: "Where did you get them?",
+        name: "Emily Fields",
+        username: "@EmilyF",
+        text: "Feeling nostalgic today.",
         profilePic: "https://via.placeholder.com/50",
-        date: "September 1, 2010 10:45 AM",
-        replies: 0,
-        retweets: 0,
-        likes: 1,
-        bookmarks: 0,
-        replyIds: []
+        date: "September 3, 2010 9:00 AM",
+        replies: [],
+        retweets: 2,
+        likes: 8,
+        bookmarks: 0
     },
     {
         id: 4,
@@ -45,22 +45,21 @@ const tweets = [
         text: "Reading a new book.",
         profilePic: "https://via.placeholder.com/50",
         date: "September 4, 2010 4:45 PM",
-        replies: 0,
+        replies: [],
         retweets: 1,
         likes: 4,
-        bookmarks: 0,
-        replyIds: []
+        bookmarks: 0
     }
 ];
 
+const user = { name: "You", username: "@You", profilePic: "https://via.placeholder.com/50" };
+
 function loadTweets() {
     const container = document.getElementById('tweets');
-
-    for (let i = 0; i < tweets.length; i++) {
-        const tweet = tweets[i];
+    tweets.forEach(tweet => {
         const tweetDiv = document.createElement('div');
         tweetDiv.className = 'tweet';
-        tweetDiv.onclick = () => showTweetDetails(tweet.id);
+        tweetDiv.onclick = () => openTweet(tweet.id);
 
         const profilePic = document.createElement('div');
         profilePic.className = 'profile-pic';
@@ -93,10 +92,10 @@ function loadTweets() {
         const tweetFooter = document.createElement('div');
         tweetFooter.className = 'tweet-footer';
         tweetFooter.innerHTML = `
-            💬 <span class="replies">${tweet.replies}</span>
+            💬 <span class="replies">${tweet.replies.length}</span>
             🔁 <span class="retweets">${tweet.retweets}</span>
             ❤️ <span class="likes">${tweet.likes}</span>
-            🔖 <span class="bookmarks">${tweet.bookmarks}</span>
+            📌 <span class="bookmarks">${tweet.bookmarks}</span>
         `;
 
         tweetContent.appendChild(tweetHeader);
@@ -107,24 +106,20 @@ function loadTweets() {
         tweetDiv.appendChild(tweetContent);
 
         container.appendChild(tweetDiv);
-    }
+    });
 }
 
-function showTweetDetails(tweetId) {
-    window.location.href = `tweet.html?id=${tweetId}`;
+function openTweet(id) {
+    localStorage.setItem('currentTweet', id);
+    window.location.href = 'tweet.html';
 }
 
-function loadTweetDetails() {
-    const params = new URLSearchParams(window.location.search);
-    const tweetId = parseInt(params.get('id'));
+function loadTweetPage() {
+    const tweetId = parseInt(localStorage.getItem('currentTweet'));
     const tweet = tweets.find(t => t.id === tweetId);
 
     if (tweet) {
         const tweetContainer = document.getElementById('tweet');
-
-        const tweetDiv = document.createElement('div');
-        tweetDiv.className = 'tweet';
-
         const profilePic = document.createElement('div');
         profilePic.className = 'profile-pic';
         const img = document.createElement('img');
@@ -156,56 +151,47 @@ function loadTweetDetails() {
         const tweetFooter = document.createElement('div');
         tweetFooter.className = 'tweet-footer';
         tweetFooter.innerHTML = `
-            ❤️ <span class="likes" onclick="toggleLike(${tweet.id})">${tweet.likes}</span>
-            🔁 <span class="retweets" onclick="toggleRetweet(${tweet.id})">${tweet.retweets}</span>
-            🔖 <span class="bookmarks" onclick="toggleBookmark(${tweet.id})">${tweet.bookmarks}</span>
+            💬 <span class="replies">${tweet.replies.length}</span>
+            🔁 <span class="retweets">${tweet.retweets}</span>
+            ❤️ <span class="likes">${tweet.likes}</span>
+            📌 <span class="bookmarks">${tweet.bookmarks}</span>
         `;
 
         tweetContent.appendChild(tweetHeader);
         tweetContent.appendChild(tweetText);
         tweetContent.appendChild(tweetFooter);
 
-        tweetDiv.appendChild(profilePic);
-        tweetDiv.appendChild(tweetContent);
+        tweetContainer.appendChild(profilePic);
+        tweetContainer.appendChild(tweetContent);
 
-        tweetContainer.appendChild(tweetDiv);
-
-        loadReplies(tweet.replyIds);
-    }
-}
-
-function loadReplies(replyIds) {
-    const repliesContainer = document.getElementById('replies');
-
-    replyIds.forEach(replyId => {
-        const reply = tweets.find(t => t.id === replyId);
-        if (reply) {
+        const repliesContainer = document.getElementById('replies');
+        tweet.replies.forEach(reply => {
             const replyDiv = document.createElement('div');
-            replyDiv.className = 'reply';
+            replyDiv.className = 'tweet';
 
-            const profilePic = document.createElement('div');
-            profilePic.className = 'profile-pic';
-            const img = document.createElement('img');
-            img.src = reply.profilePic;
-            profilePic.appendChild(img);
+            const replyProfilePic = document.createElement('div');
+            replyProfilePic.className = 'profile-pic';
+            const replyImg = document.createElement('img');
+            replyImg.src = reply.profilePic;
+            replyProfilePic.appendChild(replyImg);
 
             const replyContent = document.createElement('div');
             replyContent.className = 'tweet-content';
 
             const replyHeader = document.createElement('div');
             replyHeader.className = 'tweet-header';
-            const name = document.createElement('h3');
-            name.className = 'name';
-            name.innerText = reply.name;
-            const username = document.createElement('span');
-            username.className = 'username';
-            username.innerText = reply.username;
-            const date = document.createElement('span');
-            date.className = 'date';
-            date.innerText = reply.date;
-            replyHeader.appendChild(name);
-            replyHeader.appendChild(username);
-            replyHeader.appendChild(date);
+            const replyName = document.createElement('h3');
+            replyName.className = 'name';
+            replyName.innerText = reply.name;
+            const replyUsername = document.createElement('span');
+            replyUsername.className = 'username';
+            replyUsername.innerText = reply.username;
+            const replyDate = document.createElement('span');
+            replyDate.className = 'date';
+            replyDate.innerText = reply.date;
+            replyHeader.appendChild(replyName);
+            replyHeader.appendChild(replyUsername);
+            replyHeader.appendChild(replyDate);
 
             const replyText = document.createElement('p');
             replyText.className = 'tweet-text';
@@ -214,149 +200,46 @@ function loadReplies(replyIds) {
             const replyFooter = document.createElement('div');
             replyFooter.className = 'tweet-footer';
             replyFooter.innerHTML = `
-                ❤️ <span class="likes" onclick="toggleLike(${reply.id})">${reply.likes}</span>
-                🔁 <span class="retweets" onclick="toggleRetweet(${reply.id})">${reply.retweets}</span>
-                🔖 <span class="bookmarks" onclick="toggleBookmark(${reply.id})">${reply.bookmarks}</span>
+                💬 <span class="replies">0</span>
+                🔁 <span class="retweets">0</span>
+                ❤️ <span class="likes">${reply.likes}</span>
+                📌 <span class="bookmarks">0</span>
             `;
 
             replyContent.appendChild(replyHeader);
             replyContent.appendChild(replyText);
             replyContent.appendChild(replyFooter);
 
-            replyDiv.appendChild(profilePic);
+            replyDiv.appendChild(replyProfilePic);
             replyDiv.appendChild(replyContent);
 
             repliesContainer.appendChild(replyDiv);
-        }
-    });
-}
-
-function postReply() {
-    const params = new URLSearchParams(window.location.search);
-    const tweetId = parseInt(params.get('id'));
-    const replyText = document.getElementById('replyText').value;
-
-    if (replyText.trim()) {
-        const newReply = {
-            id: tweets.length + 1,
-            name: "You",
-            username: "@You",
-            text: replyText,
-            profilePic: "https://via.placeholder.com/50",
-            date: new Date().toLocaleString(),
-            replies: 0,
-            retweets: 0,
-            likes: 0,
-            bookmarks: 0,
-            replyIds: []
-        };
-
-        tweets.push(newReply);
-        const tweet = tweets.find(t => t.id === tweetId);
-        tweet.replyIds.push(newReply.id);
-
-        document.getElementById('replyText').value = '';
-        loadReplies(tweet.replyIds);
-    }
-}
-
-function toggleLike(tweetId) {
-    const tweet = tweets.find(t => t.id === tweetId);
-    tweet.likes += tweet.likes === 0 ? 1 : -1;
-    updateTweetFooter(tweetId);
-}
-
-function toggleRetweet(tweetId) {
-    const tweet = tweets.find(t => t.id === tweetId);
-    tweet.retweets += tweet.retweets === 0 ? 1 : -1;
-    updateTweetFooter(tweetId);
-}
-
-function toggleBookmark(tweetId) {
-    const tweet = tweets.find(t => t.id === tweetId);
-    tweet.bookmarks += tweet.bookmarks === 0 ? 1 : -1;
-    updateTweetFooter(tweetId);
-}
-
-function updateTweetFooter(tweetId) {
-    const tweet = tweets.find(t => t.id === tweetId);
-    document.querySelector(`.tweet-footer .likes`).innerText = tweet.likes;
-    document.querySelector(`.tweet-footer .retweets`).innerText = tweet.retweets;
-    document.querySelector(`.tweet-footer .bookmarks`).innerText = tweet.bookmarks;
-}
-
-function loadProfile() {
-    const params = new URLSearchParams(window.location.search);
-    const username = params.get('username');
-    const userTweets = tweets.filter(t => t.username === username);
-    const user = userTweets[0];
-
-    if (user) {
-        document.getElementById('profilePic').src = user.profilePic;
-        document.getElementById('profileName').innerText = user.name;
-        document.getElementById('profileUsername').innerText = user.username;
-
-        const container = document.getElementById('profileTweets');
-        userTweets.forEach(tweet => {
-            const tweetDiv = document.createElement('div');
-            tweetDiv.className = 'tweet';
-            tweetDiv.onclick = () => showTweetDetails(tweet.id);
-
-            const profilePic = document.createElement('div');
-            profilePic.className = 'profile-pic';
-            const img = document.createElement('img');
-            img.src = tweet.profilePic;
-            profilePic.appendChild(img);
-
-            const tweetContent = document.createElement('div');
-            tweetContent.className = 'tweet-content';
-
-            const tweetHeader = document.createElement('div');
-            tweetHeader.className = 'tweet-header';
-            const name = document.createElement('h3');
-            name.className = 'name';
-            name.innerText = tweet.name;
-            const username = document.createElement('span');
-            username.className = 'username';
-            username.innerText = tweet.username;
-            const date = document.createElement('span');
-            date.className = 'date';
-            date.innerText = tweet.date;
-            tweetHeader.appendChild(name);
-            tweetHeader.appendChild(username);
-            tweetHeader.appendChild(date);
-
-            const tweetText = document.createElement('p');
-            tweetText.className = 'tweet-text';
-            tweetText.innerText = tweet.text;
-
-            const tweetFooter = document.createElement('div');
-            tweetFooter.className = 'tweet-footer';
-            tweetFooter.innerHTML = `
-                💬 <span class="replies">${tweet.replies}</span>
-                🔁 <span class="retweets">${tweet.retweets}</span>
-                ❤️ <span class="likes">${tweet.likes}</span>
-                🔖 <span class="bookmarks">${tweet.bookmarks}</span>
-            `;
-
-            tweetContent.appendChild(tweetHeader);
-            tweetContent.appendChild(tweetText);
-            tweetContent.appendChild(tweetFooter);
-
-            tweetDiv.appendChild(profilePic);
-            tweetDiv.appendChild(tweetContent);
-
-            container.appendChild(tweetDiv);
         });
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('tweets')) {
-        loadTweets();
-    } else if (document.getElementById('tweet')) {
-        loadTweetDetails();
-    } else if (document.getElementById('profileTweets')) {
-        loadProfile();
+function addReply() {
+    const tweetId = parseInt(localStorage.getItem('currentTweet'));
+    const tweet = tweets.find(t => t.id === tweetId);
+
+    const replyText = document.getElementById('replyText').value;
+    if (replyText.trim() !== '') {
+        const newReply = {
+            name: user.name,
+            username: user.username,
+            text: replyText,
+            profilePic: user.profilePic,
+            date: new Date().toLocaleString(),
+            likes: 0
+        };
+        tweet.replies.push(newReply);
+        localStorage.setItem('tweets', JSON.stringify(tweets));
+        loadTweetPage();
     }
-});
+}
+
+if (document.getElementById('tweets')) {
+    loadTweets();
+} else if (document.getElementById('tweet')) {
+    loadTweetPage();
+}

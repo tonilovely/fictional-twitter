@@ -3,78 +3,149 @@
 <head>
     <title>Fictional Twitter</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #e6ecf0;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #1da1f2;
-            text-align: center;
-        }
-        .tweet {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-        .tweet h3 {
-            margin: 0 0 5px 0;
-        }
-        .tweet p {
-            margin: 0 0 5px 0;
-        }
-        .tweet .date {
-            font-size: 12px;
-            color: #999;
-        }
-    </style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #e6ecf0;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        color: #1da1f2;
+        text-align: center;
+    }
+    .tweet {
+        display: flex;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .profile-pic {
+        margin-right: 10px;
+    }
+    .profile-pic img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .tweet-content {
+        flex: 1;
+    }
+    .tweet-header {
+        display: flex;
+        align-items: center;
+    }
+    .tweet-header .name {
+        margin: 0;
+        margin-right: 5px;
+        font-weight: bold;
+    }
+    .tweet-header .username, .tweet-header .date {
+        color: #657786;
+    }
+    .tweet-text {
+        margin: 5px 0;
+    }
+    .tweet-footer {
+        display: flex;
+        justify-content: space-between;
+        color: #657786;
+    }
+</style>
 </head>
 <body>
     <div class="container">
         <h1>Fictional Twitter</h1>
         <p>Where fictional characters tweet.</p>
-        
-        <div class="tweet">
-            <h3>Emily Fields</h3>
-            <p>Can't believe it's been a year since Alison disappeared. Miss you, Ali.</p>
-            <span class="date">September 1, 2010</span>
+
+        <div class="tweet" id="tweet-template" style="display: none;">
+            <div class="profile-pic"><img src="" alt="Profile Picture" /></div>
+            <div class="tweet-content">
+                <div class="tweet-header">
+                    <h3 class="name"></h3> <span class="username"></span> <span class="date"></span>
+                </div>
+                <p class="tweet-text"></p>
+                <div class="tweet-footer">
+                    <span>💬 <span class="replies">0</span></span>
+                    <span>🔁 <span class="retweets">0</span></span>
+                    <span>❤️ <span class="likes">0</span></span>
+                </div>
+            </div>
         </div>
-        <div class="tweet">
-            <h3>Aria Montgomery</h3>
-            <p>Thinking about Ali today. It's so surreal...</p>
-            <span class="date">September 1, 2010</span>
-        </div>
-        
+
+        <div id="tweets"></div>
+
         <button onclick="generateTweet()">Generate New Tweet</button>
-        <div id="new-tweets"></div>
     </div>
 
     <script>
         function generateTweet() {
             const tweets = [
-                { name: "Hanna Marin", text: "Just got a new pair of shoes!", date: "September 1, 2010" },
-                { name: "Spencer Hastings", text: "Busy with my school projects.", date: "September 1, 2010" },
-                { name: "Emily Fields", text: "Feeling nostalgic today.", date: "September 1, 2010" },
-                { name: "Aria Montgomery", text: "Reading a new book.", date: "September 1, 2010" }
+                {
+                    name: "Hanna Marin",
+                    username: "@HannaM",
+                    text: "Just got a new pair of shoes!",
+                    date: "September 1, 2010",
+                    profilePic: "path/to/hanna.jpg",
+                    replies: Math.floor(Math.random() * 100),
+                    retweets: Math.floor(Math.random() * 100),
+                    likes: Math.floor(Math.random() * 100)
+                },
+                {
+                    name: "Spencer Hastings",
+                    username: "@SpencerH",
+                    text: "Busy with my school projects.",
+                    date: "September 1, 2010",
+                    profilePic: "path/to/spencer.jpg",
+                    replies: Math.floor(Math.random() * 100),
+                    retweets: Math.floor(Math.random() * 100),
+                    likes: Math.floor(Math.random() * 100)
+                },
+                {
+                    name: "Emily Fields",
+                    username: "@EmilyF",
+                    text: "Feeling nostalgic today.",
+                    date: "September 1, 2010",
+                    profilePic: "path/to/emily.jpg",
+                    replies: Math.floor(Math.random() * 100),
+                    retweets: Math.floor(Math.random() * 100),
+                    likes: Math.floor(Math.random() * 100)
+                },
+                {
+                    name: "Aria Montgomery",
+                    username: "@AriaM",
+                    text: "Reading a new book.",
+                    date: "September 1, 2010",
+                    profilePic: "path/to/aria.jpg",
+                    replies: Math.floor(Math.random() * 100),
+                    retweets: Math.floor(Math.random() * 100),
+                    likes: Math.floor(Math.random() * 100)
+                }
             ];
 
             const tweet = tweets[Math.floor(Math.random() * tweets.length)];
-            const tweetDiv = document.createElement('div');
-            tweetDiv.className = 'tweet';
-            tweetDiv.innerHTML = `<h3>${tweet.name}</h3><p>${tweet.text}</p><span class="date">${tweet.date}</span>`;
+            const tweetTemplate = document.getElementById('tweet-template');
+            const newTweet = tweetTemplate.cloneNode(true);
+            newTweet.style.display = "block";
+            newTweet.querySelector('.profile-pic img').src = tweet.profilePic;
+            newTweet.querySelector('.name').innerText = tweet.name;
+            newTweet.querySelector('.username').innerText = tweet.username;
+            newTweet.querySelector('.date').innerText = tweet.date;
+            newTweet.querySelector('.tweet-text').innerText = tweet.text;
+            newTweet.querySelector('.replies').innerText = tweet.replies;
+            newTweet.querySelector('.retweets').innerText = tweet.retweets;
+            newTweet.querySelector('.likes').innerText = tweet.likes;
 
-            document.getElementById('new-tweets').appendChild(tweetDiv);
+            document.getElementById('tweets').appendChild(newTweet);
         }
     </script>
 </body>

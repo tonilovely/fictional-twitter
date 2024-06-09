@@ -28,6 +28,7 @@
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 5px;
+            cursor: pointer;
         }
         .profile-pic {
             margin-right: 10px;
@@ -75,6 +76,7 @@
     <script>
         const tweets = [
             {
+                id: 1,
                 name: "Hanna Marin",
                 username: "@HannaM",
                 text: "Just got a new pair of shoes!",
@@ -85,6 +87,7 @@
                 likes: 5
             },
             {
+                id: 2,
                 name: "Spencer Hastings",
                 username: "@SpencerH",
                 text: "Busy with my school projects.",
@@ -95,6 +98,7 @@
                 likes: 3
             },
             {
+                id: 3,
                 name: "Emily Fields",
                 username: "@EmilyF",
                 text: "Feeling nostalgic today.",
@@ -105,6 +109,7 @@
                 likes: 8
             },
             {
+                id: 4,
                 name: "Aria Montgomery",
                 username: "@AriaM",
                 text: "Reading a new book.",
@@ -127,6 +132,7 @@
                 const tweet = tweets[tweetIndex];
                 const tweetDiv = document.createElement('div');
                 tweetDiv.className = 'tweet';
+                tweetDiv.onclick = () => showTweetDetails(tweet.id);
 
                 const profilePic = document.createElement('div');
                 profilePic.className = 'profile-pic';
@@ -165,25 +171,34 @@
                 `;
 
                 tweetContent.appendChild(tweetHeader);
-                tweetContent.appendChild(tweetText);
-                tweetContent.appendChild(tweetFooter);
+                tweet            Content.appendChild(tweetText);
+            tweetContent.appendChild(tweetFooter);
 
-                tweetDiv.appendChild(profilePic);
-                tweetDiv.appendChild(tweetContent);
+            tweetDiv.appendChild(profilePic);
+            tweetDiv.appendChild(tweetContent);
 
-                container.appendChild(tweetDiv);
+            container.appendChild(tweetDiv);
 
-                tweetIndex++;
-            }
+            tweetIndex++;
         }
+    }
 
-        window.addEventListener('scroll', () => {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                loadTweets();
-            }
-        });
+    function showTweetDetails(tweetId) {
+        const tweet = tweets.find(t => t.id === tweetId);
+        if (tweet) {
+            // Redirect to a new page or open a modal to show the tweet details
+            // For simplicity, we'll just alert the tweet details
+            alert(`Tweet by ${tweet.name} (${tweet.username})\n${tweet.date}\n\n${tweet.text}`);
+        }
+    }
 
-        loadTweets(); // Initial load of tweets
-    </script>
+    window.addEventListener('scroll', () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            loadTweets();
+        }
+    });
+
+    loadTweets(); // Initial load of tweets
+</script>
 </body>
 </html>

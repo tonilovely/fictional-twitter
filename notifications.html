@@ -3,49 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifications - Fictional Twitter</title>
+    <title>Notifications</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <ul>
-                <li><a href="index.html"><span class="icon">&#x1F3E0;</span> Home</a></li>
-                <li><a href="explore.html"><span class="icon">&#x1F50D;</span> Explore</a></li>
-                <li><a href="notifications.html"><span class="icon">&#x1F514;</span> Notifications</a></li>
-                <li><a href="communities.html"><span class="icon">&#x1F4AC;</span> Communities</a></li>
-                <li><a href="profile.html"><span class="icon">&#x1F464;</span> Profile</a></li>
-                <li><a href="#"><span class="icon">&#x22EF;</span> More</a></li>
-            </ul>
-            <button class="tweet-button">Tweet</button>
-        </div>
-
-        <div class="main-content">
-            <div class="header">
-                <h1>Notifications</h1>
-            </div>
-            <div class="notifications">
-                <div class="notification-card">
-                    <img src="profile3.jpg" alt="Profile Picture" class="profile-pic">
-                    <div class="notification-content">
-                        <span class="user-name">Aria Montgomery</span> liked your tweet.
-                    </div>
-                </div>
-                <!-- Repeat the above div for each notification -->
-            </div>
-        </div>
-
-        <div class="right-sidebar">
-            <div class="trending">
-                <h2>What's happening</h2>
-                <ul>
-                    <li>India vs Pakistan - Cricket - LIVE</li>
-                    <li>Music - Trending - Olivia Rodrigo</li>
-                    <li>#EdinburghTSTheErasTour - 56.2K posts</li>
-                    <li>#Eminem - Trending</li>
-                    <li>Joe Alwyn - 1,516 posts</li>
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="notifications.html">Notifications</a></li>
+            <li><a href="communities.html">Communities</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#" id="more">More</a>
+                <ul class="dropdown">
+                    <li><a href="#">Lists</a></li>
+                    <li><a href="#">Bookmarks</a></li>
+                    <li><a href="#">Spaces</a></li>
+                    <li><a href="#">Settings and Privacy</a></li>
                 </ul>
-            </div>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>Notifications</h1>
+        <div class="notification">
+            <p><strong>@User1</strong> liked your tweet</p>
+            <p>"Just got a new pair of shoes!"</p>
+        </div>
+        <div class="notification">
+            <p><strong>@User2</strong> retweeted your tweet</p>
+            <p>"Feeling nostalgic today."</p>
         </div>
     </div>
     <script src="script.js"></script>

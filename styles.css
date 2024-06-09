@@ -2,79 +2,101 @@ body {
     font-family: Arial, sans-serif;
     background-color: #15202b;
     color: #ffffff;
+    display: flex;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
-.container {
-    max-width: 600px;
-    margin: auto;
+
+.sidebar, .right-sidebar {
+    width: 20%;
+    padding: 20px;
     background-color: #192734;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.sidebar h2, .right-sidebar h2 {
+    color: #1da1f2;
+}
+
+.main-content {
+    width: 60%;
+    padding: 20px;
+    background-color: #15202b;
+    border-left: 1px solid #192734;
+    border-right: 1px solid #192734;
+}
+
 h1 {
     color: #1da1f2;
     text-align: center;
 }
-.tweet, .profile-tweet {
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+}
+
+ul li a:hover {
+    background-color: #1da1f2;
+    color: #ffffff;
+}
+
+.tweet {
     display: flex;
-    background-color: #243447;
+    background-color: #192734;
     border: 1px solid #38444d;
     padding: 10px;
     margin-bottom: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 10px;
 }
+
 .profile-pic {
     margin-right: 10px;
 }
+
 .profile-pic img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
-.tweet-content, .profile-content {
+
+.tweet-content {
     flex: 1;
 }
-.tweet-header, .profile-header {
+
+.tweet-header {
     display: flex;
     align-items: center;
 }
-.tweet-header .name, .profile-header .name {
+
+.tweet-header .name {
     margin: 0;
     margin-right: 5px;
     font-weight: bold;
 }
-.tweet-header .username, .tweet-header .date, .profile-header .username, .profile-header .date {
+
+.tweet-header .username, .tweet-header .date {
     color: #657786;
     margin-left: 5px;
 }
-.tweet-text, .profile-text {
+
+.tweet-text {
     margin: 5px 0;
 }
-.tweet-footer, .profile-footer {
+
+.tweet-footer {
     display: flex;
     justify-content: space-between;
     color: #657786;
 }
-input, button {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 10px;
-}
-input {
-    width: calc(100% - 110px);
-}
-button {
-    width: 100px;
-    background-color: #1da1f2;
-    color: #ffffff;
-    cursor: pointer;
-}
+
 .loader {
     text-align: center;
     padding: 20px;
-    color: #1da1f2;
 }

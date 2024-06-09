@@ -1,21 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tweet Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #15202b;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .tweet {
+            background-color: #192734;
+            border: 1px solid #38444d;
+            border-radius: 15px;
+            padding: 20px;
+            width: 600px;
+        }
+        .tweet-header {
+            display: flex;
+            align-items: center;
+        }
+        .profile-pic img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .tweet-content {
+            margin-left: 10px;
+        }
+        .tweet-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .tweet-footer span {
+            cursor: pointer;
+        }
+        h1 {
+            color: #1da1f2;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Tweet Page</h1>
-        <div id="tweet"></div>
-        <div id="replySection">
-            <input type="text" id="replyInput" placeholder="Enter your reply">
-            <button id="replyButton">Reply</button>
+        <div class="tweet">
+            <h1>Tweet Page</h1>
+            <div class="tweet-header">
+                <div class="profile-pic"><img src="https://via.placeholder.com/50"></div>
+                <div class="tweet-content">
+                    <p><strong>Hanna Marin</strong> @HannaM <br> <small>September 1, 2010 10:15 AM</small></p>
+                    <p>Just got a new pair of shoes!</p>
+                </div>
+            </div>
+            <div class="tweet-footer">
+                <span>💬 2</span>
+                <span>🔁 1</span>
+                <span>❤️ 5</span>
+                <span>🔖 0</span>
+            </div>
+            <input type="text" placeholder="Enter your reply">
+            <button>Reply</button>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>

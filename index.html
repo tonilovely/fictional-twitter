@@ -79,59 +79,44 @@
                 username: "@HannaM",
                 text: "Just got a new pair of shoes!",
                 profilePic: "https://via.placeholder.com/50",
-                replies: Math.floor(Math.random() * 100),
-                retweets: Math.floor(Math.random() * 100),
-                likes: Math.floor(Math.random() * 100)
+                date: "September 1, 2010 10:15 AM",
+                replies: 2,
+                retweets: 1,
+                likes: 5
             },
             {
                 name: "Spencer Hastings",
                 username: "@SpencerH",
                 text: "Busy with my school projects.",
                 profilePic: "https://via.placeholder.com/50",
-                replies: Math.floor(Math.random() * 100),
-                retweets: Math.floor(Math.random() * 100),
-                likes: Math.floor(Math.random() * 100)
+                date: "September 2, 2010 2:30 PM",
+                replies: 1,
+                retweets: 0,
+                likes: 3
             },
             {
                 name: "Emily Fields",
                 username: "@EmilyF",
                 text: "Feeling nostalgic today.",
                 profilePic: "https://via.placeholder.com/50",
-                replies: Math.floor(Math.random() * 100),
-                retweets: Math.floor(Math.random() * 100),
-                likes: Math.floor(Math.random() * 100)
+                date: "September 3, 2010 9:00 AM",
+                replies: 3,
+                retweets: 2,
+                likes: 8
             },
             {
                 name: "Aria Montgomery",
                 username: "@AriaM",
                 text: "Reading a new book.",
                 profilePic: "https://via.placeholder.com/50",
-                replies: Math.floor(Math.random() * 100),
-                retweets: Math.floor(Math.random() * 100),
-                likes: Math.floor(Math.random() * 100)
+                date: "September 4, 2010 4:45 PM",
+                replies: 0,
+                retweets: 1,
+                likes: 4
             }
         ];
 
         let tweetIndex = 0;
-
-        function generateRandomDate() {
-            const start = new Date(2006, 10, 1); // November 1, 2006
-            const end = new Date();
-            const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-            return date;
-        }
-
-        function formatDate(date) {
-            const options = {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric',
-                hour12: true
-            };
-            return date.toLocaleString('en-US', options);
-        }
 
         function loadTweets() {
             const container = document.getElementById('tweets');
@@ -162,7 +147,7 @@
                 username.innerText = tweet.username;
                 const date = document.createElement('span');
                 date.className = 'date';
-                date.innerText = formatDate(generateRandomDate());
+                date.innerText = tweet.date;
                 tweetHeader.appendChild(name);
                 tweetHeader.appendChild(username);
                 tweetHeader.appendChild(date);

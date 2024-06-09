@@ -62,6 +62,10 @@
             justify-content: space-between;
             color: #657786;
         }
+        .interaction {
+            margin: 0 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -73,131 +77,6 @@
         <div id="loader" class="loader"></div>
     </div>
 
-    <script>
-        const tweets = [
-            {
-                id: 1,
-                name: "Hanna Marin",
-                username: "@HannaM",
-                text: "Just got a new pair of shoes!",
-                profilePic: "https://via.placeholder.com/50",
-                date: "September 1, 2010 10:15 AM",
-                replies: 2,
-                retweets: 1,
-                likes: 5
-            },
-            {
-                id: 2,
-                name: "Spencer Hastings",
-                username: "@SpencerH",
-                text: "Busy with my school projects.",
-                profilePic: "https://via.placeholder.com/50",
-                date: "September 2, 2010 2:30 PM",
-                replies: 1,
-                retweets: 0,
-                likes: 3
-            },
-            {
-                id: 3,
-                name: "Emily Fields",
-                username: "@EmilyF",
-                text: "Feeling nostalgic today.",
-                profilePic: "https://via.placeholder.com/50",
-                date: "September 3, 2010 9:00 AM",
-                replies: 3,
-                retweets: 2,
-                likes: 8
-            },
-            {
-                id: 4,
-                name: "Aria Montgomery",
-                username: "@AriaM",
-                text: "Reading a new book.",
-                profilePic: "https://via.placeholder.com/50",
-                date: "September 4, 2010 4:45 PM",
-                replies: 0,
-                retweets: 1,
-                likes: 4
-            }
-        ];
-
-        let tweetIndex = 0;
-
-        function loadTweets() {
-            const container = document.getElementById('tweets');
-
-            for (let i = 0; i < 5; i++) {
-                if (tweetIndex >= tweets.length) break;
-
-                const tweet = tweets[tweetIndex];
-                const tweetDiv = document.createElement('div');
-                tweetDiv.className = 'tweet';
-                tweetDiv.onclick = () => showTweetDetails(tweet.id);
-
-                const profilePic = document.createElement('div');
-                profilePic.className = 'profile-pic';
-                const img = document.createElement('img');
-                img.src = tweet.profilePic;
-                profilePic.appendChild(img);
-
-                const tweetContent = document.createElement('div');
-                tweetContent.className = 'tweet-content';
-
-                const tweetHeader = document.createElement('div');
-                tweetHeader.className = 'tweet-header';
-                const name = document.createElement('h3');
-                name.className = 'name';
-                name.innerText = tweet.name;
-                const username = document.createElement('span');
-                username.className = 'username';
-                username.innerText = tweet.username;
-                const date = document.createElement('span');
-                date.className = 'date';
-                date.innerText = tweet.date;
-                tweetHeader.appendChild(name);
-                tweetHeader.appendChild(username);
-                tweetHeader.appendChild(date);
-
-                const tweetText = document.createElement('p');
-                tweetText.className = 'tweet-text';
-                tweetText.innerText = tweet.text;
-
-                const tweetFooter = document.createElement('div');
-                tweetFooter.className = 'tweet-footer';
-                tweetFooter.innerHTML = `
-                    💬 <span class="replies">${tweet.replies}</span>
-                    🔁 <span class="retweets">${tweet.retweets}</span>
-                    ❤️ <span class="likes">${tweet.likes}</span>
-                `;
-
-                tweetContent.appendChild(tweetHeader);
-                tweetContent.appendChild(tweetText);
-                tweetContent.appendChild(tweetFooter);
-
-                tweetDiv.appendChild(profilePic);
-                tweetDiv.appendChild(tweetContent);
-
-                container.appendChild(tweetDiv);
-
-                tweetIndex++;
-            }
-        }
-
-        function showTweetDetails(tweetId) {
-            const tweet = tweets.find(t => t.id === tweetId);
-            if (tweet) {
-                const queryString = new URLSearchParams({ id: tweetId }).toString();
-                window.location.href = `tweet.html?${queryString}`;
-            }
-        }
-
-        window.addEventListener('scroll', () => {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                loadTweets();
-            }
-        });
-
-        loadTweets(); // Initial load of tweets
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

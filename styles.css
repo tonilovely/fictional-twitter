@@ -1,128 +1,29 @@
-body {
+.more-menu {
+    display: none;
+    position: absolute;
+    background-color: #15202b;
+    border: 1px solid #38444d;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+.more-menu.show {
+    display: block;
+}
+
+.more-menu ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #15202B;
-    color: #FFFFFF;
 }
 
-.container {
-    display: flex;
+.more-menu ul li {
+    margin-bottom: 10px;
 }
 
-.sidebar {
-    width: 250px;
-    padding: 20px;
-    background-color: #192734;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin: 20px 0;
-}
-
-.sidebar ul li a {
+.more-menu ul li a {
+    color: #1da1f2;
     text-decoration: none;
-    color: #FFFFFF;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-}
-
-.sidebar ul li .icon {
-    margin-right: 10px;
-}
-
-.tweet-button {
-    background-color: #1DA1F2;
-    color: #FFFFFF;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 20px;
-    width: 100%;
-    text-align: center;
-}
-
-.main-content {
-    flex: 1;
-    padding: 20px;
-    border-left: 1px solid #38444D;
-    border-right: 1px solid #38444D;
-}
-
-.header {
-    border-bottom: 1px solid #38444D;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.tweets .tweet-card {
-    display: flex;
-    border-bottom: 1px solid #38444D;
-    padding: 20px 0;
-}
-
-.tweets .tweet-card:last-child {
-    border-bottom: none;
-}
-
-.profile-pic {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 20px;
-}
-
-.tweet-content {
-    flex: 1;
-}
-
-.tweet-header {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.user-name {
-    font-weight: bold;
-}
-
-.user-handle,
-.tweet-date {
-    color: #8899A6;
-    margin-left: 5px;
-}
-
-.tweet-text {
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-.tweet-interactions .icon {
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.right-sidebar {
-    width: 250px;
-    padding: 20px;
-    background-color: #192734;
-}
-
-.trending h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.trending ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.trending ul li {
-    margin-bottom: 10px;
 }

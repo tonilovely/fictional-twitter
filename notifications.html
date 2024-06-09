@@ -3,34 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifications</title>
+    <title>Notifications | Fictional Twitter</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="sidebar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="explore.html">Explore</a></li>
-            <li><a href="notifications.html">Notifications</a></li>
-            <li><a href="communities.html">Communities</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li class="more">
-                <a href="#">More</a>
-                <ul class="dropdown">
-                    <li><a href="lists.html">Lists</a></li>
-                    <li><a href="bookmarks.html">Bookmarks</a></li>
-                    <li><a href="spaces.html">Spaces</a></li>
-                    <li><a href="settings.html">Settings and Privacy</a></li>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="index.html"><img src="home-icon.png" alt="Home Icon"> Home</a></li>
+                <li><a href="explore.html"><img src="explore-icon.png" alt="Explore Icon"> Explore</a></li>
+                <li><a href="notifications.html"><img src="notifications-icon.png" alt="Notifications Icon"> Notifications</a></li>
+                <li><a href="communities.html"><img src="communities-icon.png" alt="Communities Icon"> Communities</a></li>
+                <li><a href="profile.html"><img src="profile-icon.png" alt="Profile Icon"> Profile</a></li>
+                <li><a href="#" id="more-button"><img src="more-icon.png" alt="More Icon"> More</a>
+                    <ul id="more-dropdown" class="hidden">
+                        <li><a href="lists.html">Lists</a></li>
+                        <li><a href="bookmarks.html">Bookmarks</a></li>
+                        <li><a href="spaces.html">Spaces</a></li>
+                        <li><a href="settings.html">Settings and Privacy</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <main class="content">
+            <h1>Notifications</h1>
+            <div class="notifications-list">
+                <p>Emily Fields liked your tweet</p>
+                <blockquote>Just got a new pair of shoes!</blockquote>
+                <p>Spencer Hastings retweeted your tweet</p>
+                <blockquote>Busy with my school projects.</blockquote>
+            </div>
+        </main>
+        <aside class="right-sidebar">
+            <div class="premium">
+                <button>Subscribe to Premium</button>
+                <p>Subscribe to unlock new features and if eligible, receive a share of ads revenue.</p>
+            </div>
+            <div class="live-on-x">
+                <h2>Live on X</h2>
+                <ul>
+                    <li><a href="#">Love island s11ep7 - #weonsmoke</a></li>
+                    <li><a href="#">Onchain Summer Updates with @50MMCollective</a></li>
+                    <li><a href="#">rania’s Space</a></li>
+                    <li><a href="#">Kaylor Alive</a></li>
                 </ul>
-            </li>
-        </ul>
+            </div>
+            <div class="what-happening">
+                <h2>What's happening</h2>
+                <p>IGN Live 2024 - Gaming Event - LIVE</p>
+            </div>
+        </aside>
     </div>
-    <div class="content">
-        <h1>Notifications</h1>
-        <p><strong>Emily Fields</strong> liked your tweet<br>
-        "Just got a new pair of shoes!"</p>
-        <p><strong>Spencer Hastings</strong> retweeted your tweet<br>
-        "Busy with my school projects."</p>
-    </div>
+    <script src="script.js"></script>
 </body>
 </html>

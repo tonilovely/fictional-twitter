@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #15202b;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #192734;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    color: #1da1f2;
+    text-align: center;
+}
+.tweet, .profile-tweet {
+    display: flex;
+    background-color: #243447;
+    border: 1px solid #38444d;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.profile-pic {
+    margin-right: 10px;
+}
+.profile-pic img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.tweet-content, .profile-content {
+    flex: 1;
+}
+.tweet-header, .profile-header {
+    display: flex;
+    align-items: center;
+}
+.tweet-header .name, .profile-header .name {
+    margin: 0;
+    margin-right: 5px;
+    font-weight: bold;
+}
+.tweet-header .username, .tweet-header .date, .profile-header .username, .profile-header .date {
+    color: #657786;
+    margin-left: 5px;
+}
+.tweet-text, .profile-text {
+    margin: 5px 0;
+}
+.tweet-footer, .profile-footer {
+    display: flex;
+    justify-content: space-between;
+    color: #657786;
+}
+input, button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+}
+input {
+    width: calc(100% - 110px);
+}
+button {
+    width: 100px;
+    background-color: #1da1f2;
+    color: #ffffff;
+    cursor: pointer;
+}
+.loader {
+    text-align: center;
+    padding: 20px;
+    color: #1da1f2;
+}

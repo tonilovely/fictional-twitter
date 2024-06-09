@@ -234,7 +234,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-if (window.location.pathname.includes('index.html')) {
+if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
     loadTweets(); // Initial load of tweets
 } else if (window.location.pathname.includes('tweet.html')) {
     loadTweetDetails(); // Load tweet details when on tweet.html

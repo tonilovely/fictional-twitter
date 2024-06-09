@@ -8,40 +8,57 @@
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <h2>Sidebar</h2>
+        <div class="sidebar">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="#">Notifications</a></li>
-                <li><a href="#">Communities</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">More</a></li>
+                <li><a href="index.html"><span class="icon">&#x1F3E0;</span> Home</a></li>
+                <li><a href="explore.html"><span class="icon">&#x1F50D;</span> Explore</a></li>
+                <li><a href="notifications.html"><span class="icon">&#x1F514;</span> Notifications</a></li>
+                <li><a href="communities.html"><span class="icon">&#x1F4AC;</span> Communities</a></li>
+                <li><a href="profile.html"><span class="icon">&#x1F464;</span> Profile</a></li>
+                <li><a href="#"><span class="icon">&#x22EF;</span> More</a></li>
             </ul>
-        </aside>
-        <main class="main-content">
-            <h1>Fictional Twitter</h1>
-            <p>Where fictional characters tweet.</p>
-            <div class="tweet">
-                <img src="placeholder.jpg" alt="Profile Picture">
-                <div class="tweet-content">
-                    <h3>Hanna Marin <span>@HannaM · September 1, 2010 10:15 AM</span></h3>
-                    <p>Just got a new pair of shoes!</p>
-                    <div class="tweet-icons">
-                        <span>💬 2</span>
-                        <span>🔁 1</span>
-                        <span>❤️ 5</span>
-                        <span>📌 0</span>
+            <button class="tweet-button">Tweet</button>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Home</h1>
+            </div>
+            <div class="tweets">
+                <div class="tweet-card">
+                    <img src="profile1.jpg" alt="Profile Picture" class="profile-pic">
+                    <div class="tweet-content">
+                        <div class="tweet-header">
+                            <span class="user-name">Hanna Marin</span> 
+                            <span class="user-handle">@HannaM</span> 
+                            <span class="tweet-date">September 1, 2010 10:15 AM</span>
+                        </div>
+                        <div class="tweet-text">Just got a new pair of shoes!</div>
+                        <div class="tweet-interactions">
+                            <span class="icon">&#x1F4AC;</span> 2 
+                            <span class="icon">&#x1F4CE;</span> 1 
+                            <span class="icon">&#x2764;</span> 5 
+                            <span class="icon">&#x1F4DD;</span> 0
+                        </div>
                     </div>
                 </div>
+                <!-- Repeat the above div for each tweet -->
             </div>
-            <!-- Repeat similar blocks for other tweets -->
-        </main>
-        <aside class="whats-happening">
-            <h2>What's happening</h2>
-            <p>Trending topics and other content.</p>
-        </aside>
+        </div>
+
+        <div class="right-sidebar">
+            <div class="trending">
+                <h2>What's happening</h2>
+                <ul>
+                    <li>India vs Pakistan - Cricket - LIVE</li>
+                    <li>Music - Trending - Olivia Rodrigo</li>
+                    <li>#EdinburghTSTheErasTour - 56.2K posts</li>
+                    <li>#Eminem - Trending</li>
+                    <li>Joe Alwyn - 1,516 posts</li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <script src="javascript.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

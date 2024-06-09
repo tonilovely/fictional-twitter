@@ -1,29 +1,109 @@
-.more-menu {
-    display: none;
-    position: absolute;
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
     background-color: #15202b;
-    border: 1px solid #38444d;
-    border-radius: 4px;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #1c2938;
     padding: 10px;
-    z-index: 1000;
+    height: 100vh;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: #1da1f2;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.main-content {
+    width: 60%;
+    padding: 20px;
+}
+
+.tweet {
+    background-color: #192734;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.tweet img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    float: left;
+}
+
+.tweet div {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet .actions {
+    display: flex;
+    justify-content: space-around;
     margin-top: 10px;
 }
 
-.more-menu.show {
+.trending {
+    width: 20%;
+    padding: 20px;
+    background-color: #1c2938;
+    height: 100vh;
+}
+
+.trending ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.trending ul li {
+    margin: 10px 0;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+}
+
+#more:hover .dropdown {
     display: block;
 }
 
-.more-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.notification {
+    background-color: #192734;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-.more-menu ul li {
-    margin-bottom: 10px;
-}
-
-.more-menu ul li a {
-    color: #1da1f2;
-    text-decoration: none;
+.community {
+    background-color: #192734;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }

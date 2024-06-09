@@ -1,4 +1,8 @@
-document.getElementById('more-button').addEventListener('click', function() {
-    const dropdown = document.getElementById('more-dropdown');
-    dropdown.classList.toggle('hidden');
+document.getElementById("more").addEventListener("click", function() {
+    var dropdown = this.nextElementSibling;
+    if (dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+    } else {
+        dropdown.style.display = "block";
+    }
 });

@@ -1,93 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    loadTweets();
-    if (document.getElementById('replyButton')) {
-        document.getElementById('replyButton').addEventListener('click', postReply);
-    }
-});
-
-function loadTweets() {
+document.addEventListener("DOMContentLoaded", function() {
     const tweets = [
-        {
-            id: 1,
-            name: "Hanna Marin",
-            username: "@HannaM",
-            date: "September 1, 2010 10:15 AM",
-            text: "Just got a new pair of shoes!",
-            replies: [
-                {name: "Emily Fields", username: "@EmilyF", date: "September 1, 2010 10:30 AM", text: "Nice shoes!"},
-                {name: "Spencer Hastings", username: "@SpencerH", date: "September 1, 2010 10:45 AM", text: "Where did you get them?"}
-            ],
-            likes: 5,
-            retweets: 1,
-            bookmarks: 0
-        },
-        {
-            id: 2,
-            name: "Emily Fields",
-            username: "@EmilyF",
-            date: "September 1, 2010 10:30 AM",
-            text: "Nice shoes!",
-            replies: [],
-            likes: 1,
-            retweets: 0,
-            bookmarks: 0
-        }
+        { username: "Hanna Marin", handle: "@HannaM", date: "September 1, 2010 10:15 AM", content: "Just got a new pair of shoes!", replies: 2, retweets: 1, likes: 5, bookmarks: 0 },
+        { username: "Spencer Hastings", handle: "@SpencerH", date: "September 2, 2010 2:30 PM", content: "Busy with my school projects.", replies: 0, retweets: 0, likes: 1, bookmarks: 0 },
+        { username: "Emily Fields", handle: "@EmilyF", date: "September 3, 2010 9:00 AM", content: "Feeling nostalgic today.", replies: 0, retweets: 0, likes: 1, bookmarks: 0 },
+        { username: "Aria Montgomery", handle: "@AriaM", date: "September 4, 2010 4:45 PM", content: "Reading a new book.", replies: 0, retweets: 1, likes: 4, bookmarks: 0 },
     ];
 
-    let tweetContainer = document.getElementById('tweets');
-    tweetContainer.innerHTML = '';
+    const tweetsContainer = document.getElementById("tweets");
 
     tweets.forEach(tweet => {
-        let tweetDiv = document.createElement('div');
-        tweetDiv.classList.add('tweet');
-        tweetDiv.innerHTML = `
-            <div class="profile-pic"><img src="https://via.placeholder.com/50" alt="Profile Picture"></div>
-            <div class="tweet-content">
-                <div class="tweet-header">
-                    <p class="name">${tweet.name}</p>
-                    <p class="username">${tweet.username}</p>
-                    <p class="date">${tweet.date}</p>
-                </div>
-                <p class="tweet-text">${tweet.text}</p>
-                <div class="tweet-footer">
-                    <span>${tweet.likes} Likes</span>
-                    <span>${tweet.retweets} Retweets</span>
-                    <span>${tweet.bookmarks} Bookmarks</span>
+        const tweetElement = document.createElement("div");
+        tweetElement.classList.add("tweet");
+
+        tweetElement.innerHTML = `
+            <div class="tweet-header">
+                <div class="profile-pic"><img src="https://via.placeholder.com/50"></div>
+                <div class="tweet-content">
+                    <p><strong>${tweet.username}</strong> ${tweet.handle} <br> <small>${tweet.date}</small></p>
+                    <p>${tweet.content}</p>
                 </div>
             </div>
+            <div class="tweet-footer">
+                <span>💬 ${tweet.replies}</span>
+                <span>🔁 ${tweet.retweets}</span>
+                <span>❤️ ${tweet.likes}</span>
+                <span>🔖 ${tweet.bookmarks}</span>
+            </div>
         `;
-        tweetDiv.addEventListener('click', () => openTweet(tweet));
-        tweetContainer.appendChild(tweetDiv);
+
+        tweetsContainer.appendChild(tweetElement);
     });
-}
-
-function openTweet(tweet) {
-    window.location.href = `tweet.html?id=${tweet.id}`;
-}
-
-function postReply() {
-    const replyInput = document.getElementById('replyInput');
-    const replyText = replyInput.value;
-    if (replyText) {
-        const replyDiv = document.createElement('div');
-        replyDiv.classList.add('tweet');
-        replyDiv.innerHTML = `
-            <div class="profile-pic"><img src="https://via.placeholder.com/50" alt="Profile Picture"></div>
-            <div class="tweet-content">
-                <div class="tweet-header">
-                    <p class="name">You</p>
-                    <p class="username">@You</p>
-                    <p class="date">${new Date().toLocaleString()}</p>
-                </div>
-                <p class="tweet-text">${replyText}</p>
-                <div class="tweet-footer">
-                    <span>0 Likes</span>
-                    <span>0 Retweets</span>
-                    <span>0 Bookmarks</span>
-                </div>
-            </div>
-        `;
-        document.getElementById('tweet').appendChild(replyDiv);
-        replyInput.value = '';
-    }
-}
+});

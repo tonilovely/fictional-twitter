@@ -39,6 +39,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .tweet img {
@@ -46,7 +48,6 @@ body {
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
-    float: left;
 }
 
 .tweet div {
@@ -88,10 +89,17 @@ input[type="text"] {
     display: none;
     list-style-type: none;
     padding: 0;
+    background-color: #1c2938;
+    position: absolute;
+    margin-top: 10px;
 }
 
 #more:hover .dropdown {
     display: block;
+}
+
+.dropdown li {
+    margin: 10px 0;
 }
 
 .notification {

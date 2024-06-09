@@ -55,6 +55,27 @@
             <p>Thinking about Ali today. It's so surreal...</p>
             <span class="date">September 1, 2010</span>
         </div>
+        
+        <button onclick="generateTweet()">Generate New Tweet</button>
+        <div id="new-tweets"></div>
     </div>
+
+    <script>
+        function generateTweet() {
+            const tweets = [
+                { name: "Hanna Marin", text: "Just got a new pair of shoes!", date: "September 1, 2010" },
+                { name: "Spencer Hastings", text: "Busy with my school projects.", date: "September 1, 2010" },
+                { name: "Emily Fields", text: "Feeling nostalgic today.", date: "September 1, 2010" },
+                { name: "Aria Montgomery", text: "Reading a new book.", date: "September 1, 2010" }
+            ];
+
+            const tweet = tweets[Math.floor(Math.random() * tweets.length)];
+            const tweetDiv = document.createElement('div');
+            tweetDiv.className = 'tweet';
+            tweetDiv.innerHTML = `<h3>${tweet.name}</h3><p>${tweet.text}</p><span class="date">${tweet.date}</span>`;
+
+            document.getElementById('new-tweets').appendChild(tweetDiv);
+        }
+    </script>
 </body>
 </html>

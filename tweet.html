@@ -17,7 +17,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .tweet {
+        .tweet, .reply {
             display: flex;
             background-color: #fff;
             border: 1px solid #ddd;
@@ -25,31 +25,29 @@
             margin-bottom: 10px;
             border-radius: 5px;
         }
-        .profile-pic {
-            margin-right: 10px;
-        }
         .profile-pic img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
         }
-        .tweet-content {
+        .tweet-content, .reply-content {
             flex: 1;
+            margin-left: 10px;
         }
-        .tweet-header {
+        .tweet-header, .reply-header {
             display: flex;
             align-items: center;
         }
-        .tweet-header .name {
+        .tweet-header .name, .reply-header .name {
             margin: 0;
             margin-right: 5px;
             font-weight: bold;
         }
-        .tweet-header .username, .tweet-header .date {
+        .tweet-header .username, .tweet-header .date, .reply-header .username {
             color: #657786;
             margin-left: 5px;
         }
-        .tweet-text {
+        .tweet-text, .reply-text {
             margin: 5px 0;
         }
         .tweet-footer {
@@ -57,33 +55,14 @@
             justify-content: space-between;
             color: #657786;
         }
-        .reply {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .reply img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        .reply-content {
-            flex: 1;
-        }
-        .reply-content .name {
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div id="tweet-details"></div>
         <div id="replies"></div>
-        <div id="reply-box">
-            <input type="text" id="reply-input" placeholder="Enter your reply">
-            <button onclick="postReply()">Reply</button>
-        </div>
+        <input type="text" id="reply-input" placeholder="Enter your reply">
+        <button onclick="postReply()">Reply</button>
     </div>
 
     <script src="script.js"></script>

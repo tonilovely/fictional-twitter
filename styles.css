@@ -2,101 +2,75 @@ body {
     font-family: Arial, sans-serif;
     background-color: #15202b;
     color: #ffffff;
-    display: flex;
     margin: 0;
     padding: 0;
 }
 
-.sidebar, .right-sidebar {
-    width: 20%;
-    padding: 20px;
-    background-color: #192734;
+.container {
+    display: flex;
+    justify-content: space-between;
 }
 
-.sidebar h2, .right-sidebar h2 {
+.sidebar, .whats-happening {
+    background-color: #192734;
+    padding: 20px;
+    width: 20%;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.sidebar h2, .whats-happening h2 {
     color: #1da1f2;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #1da1f2;
+    text-decoration: none;
 }
 
 .main-content {
     width: 60%;
     padding: 20px;
-    background-color: #15202b;
-    border-left: 1px solid #192734;
-    border-right: 1px solid #192734;
-}
-
-h1 {
-    color: #1da1f2;
-    text-align: center;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    display: block;
-    padding: 10px 0;
-}
-
-ul li a:hover {
-    background-color: #1da1f2;
-    color: #ffffff;
+    box-sizing: border-box;
 }
 
 .tweet {
     display: flex;
-    background-color: #192734;
-    border: 1px solid #38444d;
-    padding: 10px;
+    align-items: flex-start;
+    border-bottom: 1px solid #38444d;
+    padding-bottom: 10px;
     margin-bottom: 10px;
-    border-radius: 10px;
 }
 
-.profile-pic {
-    margin-right: 10px;
-}
-
-.profile-pic img {
-    width: 50px;
-    height: 50px;
+.tweet img {
     border-radius: 50%;
+    margin-right: 10px;
 }
 
 .tweet-content {
     flex: 1;
 }
 
-.tweet-header {
-    display: flex;
-    align-items: center;
-}
-
-.tweet-header .name {
+.tweet-content h3 {
     margin: 0;
-    margin-right: 5px;
-    font-weight: bold;
 }
 
-.tweet-header .username, .tweet-header .date {
-    color: #657786;
-    margin-left: 5px;
+.tweet-content span {
+    color: #8899a6;
 }
 
-.tweet-text {
-    margin: 5px 0;
-}
-
-.tweet-footer {
+.tweet-icons {
     display: flex;
     justify-content: space-between;
-    color: #657786;
-}
-
-.loader {
-    text-align: center;
-    padding: 20px;
+    width: 150px;
+    margin-top: 10px;
 }

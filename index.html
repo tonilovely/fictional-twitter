@@ -171,34 +171,33 @@
                 `;
 
                 tweetContent.appendChild(tweetHeader);
-                tweet            Content.appendChild(tweetText);
-            tweetContent.appendChild(tweetFooter);
+                tweetContent.appendChild(tweetText);
+                tweetContent.appendChild(tweetFooter);
 
-            tweetDiv.appendChild(profilePic);
-            tweetDiv.appendChild(tweetContent);
+                tweetDiv.appendChild(profilePic);
+                tweetDiv.appendChild(tweetContent);
 
-            container.appendChild(tweetDiv);
+                container.appendChild(tweetDiv);
 
-            tweetIndex++;
+                tweetIndex++;
+            }
         }
-    }
 
-    function showTweetDetails(tweetId) {
-        const tweet = tweets.find(t => t.id === tweetId);
-        if (tweet) {
-            // Redirect to a new page or open a modal to show the tweet details
-            // For simplicity, we'll just alert the tweet details
-            alert(`Tweet by ${tweet.name} (${tweet.username})\n${tweet.date}\n\n${tweet.text}`);
+        function showTweetDetails(tweetId) {
+            const tweet = tweets.find(t => t.id === tweetId);
+            if (tweet) {
+                const queryString = new URLSearchParams({ id: tweetId }).toString();
+                window.location.href = `tweet.html?${queryString}`;
+            }
         }
-    }
 
-    window.addEventListener('scroll', () => {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            loadTweets();
-        }
-    });
+        window.addEventListener('scroll', () => {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                loadTweets();
+            }
+        });
 
-    loadTweets(); // Initial load of tweets
-</script>
+        loadTweets(); // Initial load of tweets
+    </script>
 </body>
 </html>

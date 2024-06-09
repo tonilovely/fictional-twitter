@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fictional Twitter Profile</title>
+    <title>Profile Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,32 +21,44 @@
             display: flex;
             align-items: center;
         }
+        .profile-pic {
+            margin-right: 10px;
+        }
         .profile-pic img {
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
         }
         .profile-details {
-            margin-left: 20px;
+            flex: 1;
         }
-        .profile-details h2 {
-            margin: 0;
+        .tweets {
+            margin-top: 20px;
         }
-        .profile-details p {
-            margin: 5px 0;
+        .tweet {
+            display: flex;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="profile-header">
-            <div class="profile-pic"><img src="" alt="Profile Picture" /></div>
+            <div class="profile-pic">
+                <img src="" alt="Profile Picture" id="profilePic">
+            </div>
             <div class="profile-details">
-                <h2 class="name">Emily Fields</h2>
-                <p class="username">@EmilyF</p>
-                <p class="bio">Fictional character from Pretty Little Liars.</p>
+                <h2 id="profileName"></h2>
+                <p id="profileUsername"></p>
             </div>
         </div>
+        <div id="profileTweets" class="tweets"></div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

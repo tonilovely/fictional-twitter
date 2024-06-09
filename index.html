@@ -3,44 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Fictional Twitter</title>
+    <title>Fictional Twitter</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
+        <div class="sidebar">
             <ul>
-                <li><a href="index.html"><img src="home-icon.png" alt="Home Icon"> Home</a></li>
-                <li><a href="explore.html"><img src="explore-icon.png" alt="Explore Icon"> Explore</a></li>
-                <li><a href="notifications.html"><img src="notifications-icon.png" alt="Notifications Icon"> Notifications</a></li>
-                <li><a href="communities.html"><img src="communities-icon.png" alt="Communities Icon"> Communities</a></li>
-                <li><a href="profile.html"><img src="profile-icon.png" alt="Profile Icon"> Profile</a></li>
-                <li><a href="#" id="more-button"><img src="more-icon.png" alt="More Icon"> More</a>
-                    <ul id="more-dropdown" class="hidden">
-                        <li><a href="lists.html">Lists</a></li>
-                        <li><a href="bookmarks.html">Bookmarks</a></li>
-                        <li><a href="spaces.html">Spaces</a></li>
-                        <li><a href="settings.html">Settings and Privacy</a></li>
+                <li><img src="home_icon.png" alt="Home Icon"><a href="index.html">Home</a></li>
+                <li><img src="explore_icon.png" alt="Explore Icon"><a href="explore.html">Explore</a></li>
+                <li><img src="notifications_icon.png" alt="Notifications Icon"><a href="notifications.html">Notifications</a></li>
+                <li><img src="communities_icon.png" alt="Communities Icon"><a href="communities.html">Communities</a></li>
+                <li><img src="profile_icon.png" alt="Profile Icon"><a href="profile.html">Profile</a></li>
+                <li>
+                    <img src="more_icon.png" alt="More Icon">
+                    <a href="#" id="more">More</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Lists</a></li>
+                        <li><a href="#">Bookmarks</a></li>
+                        <li><a href="#">Spaces</a></li>
+                        <li><a href="#">Settings and Privacy</a></li>
                     </ul>
                 </li>
             </ul>
-        </aside>
-        <main class="content">
-            <h1>Home</h1>
+        </div>
+        <div class="main-content">
+            <div class="home-header">
+                <h1>Home</h1>
+            </div>
             <div class="tweet">
-                <img src="profile-pic.png" alt="Profile Picture" class="profile-pic">
+                <img src="profile_picture.png" alt="Profile Picture" class="profile-pic">
                 <div class="tweet-content">
-                    <p><strong>Hanna Marin</strong> @HannaM · September 1, 2010 10:15 AM</p>
+                    <div class="tweet-header">
+                        <span class="name">Hanna Marin</span>
+                        <span class="username">@HannaM</span>
+                        <span class="timestamp">· September 1, 2010 10:15 AM</span>
+                    </div>
                     <p>Just got a new pair of shoes!</p>
                     <div class="tweet-interactions">
-                        <span>💬 2</span>
-                        <span>🔁 1</span>
-                        <span>❤️ 5</span>
-                        <span>🔖 0</span>
+                        <span class="reply">💬 2</span>
+                        <span class="retweet">🔁 1</span>
+                        <span class="like">❤️ 5</span>
+                        <span class="bookmark">📌 0</span>
                     </div>
                 </div>
             </div>
-            <div class="trending">
+            <div class="whats-happening">
                 <h2>What's happening</h2>
                 <ul>
                     <li>India vs Pakistan - Cricket - LIVE</li>
@@ -50,26 +58,7 @@
                     <li>Joe Alwyn - 1,516 posts</li>
                 </ul>
             </div>
-        </main>
-        <aside class="right-sidebar">
-            <div class="premium">
-                <button>Subscribe to Premium</button>
-                <p>Subscribe to unlock new features and if eligible, receive a share of ads revenue.</p>
-            </div>
-            <div class="live-on-x">
-                <h2>Live on X</h2>
-                <ul>
-                    <li><a href="#">Love island s11ep7 - #weonsmoke</a></li>
-                    <li><a href="#">Onchain Summer Updates with @50MMCollective</a></li>
-                    <li><a href="#">rania’s Space</a></li>
-                    <li><a href="#">Kaylor Alive</a></li>
-                </ul>
-            </div>
-            <div class="what-happening">
-                <h2>What's happening</h2>
-                <p>IGN Live 2024 - Gaming Event - LIVE</p>
-            </div>
-        </aside>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

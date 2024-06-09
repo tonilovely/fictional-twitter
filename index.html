@@ -68,20 +68,21 @@
         <p>Where fictional characters tweet.</p>
 
         <div class="tweet" id="tweet-template" style="display: none;">
-            <div class="profile-pic"><img src="" alt="Profile Picture" /></div>
-            <div class="tweet-content">
-                <div class="tweet-header">
-                    <h3 class="name"></h3> <span class="username"></span> <span class="date"></span>
-                </div>
-                <p class="tweet-text"></p>
-                <div class="tweet-footer">
-                    <span>💬 <span class="replies">0</span></span>
-                    <span>🔁 <span class="retweets">0</span></span>
-                    <span>❤️ <span class="likes">0</span></span>
-                </div>
-            </div>
+    <div class="profile-pic"><img src="" alt="Profile Picture" /></div>
+    <div class="tweet-content">
+        <div class="tweet-header">
+            <h3 class="name"><a href="profile.html" class="profile-link"></a></h3> 
+            <span class="username"></span> 
+            <span class="date"></span>
         </div>
-
+        <p class="tweet-text"></p>
+        <div class="tweet-footer">
+            <span>💬 <span class="replies">0</span></span>
+            <span>🔁 <span class="retweets">0</span></span>
+            <span>❤️ <span class="likes">0</span></span>
+        </div>
+    </div>
+</div>
         <div id="tweets"></div>
 
         <button onclick="generateTweet()">Generate New Tweet</button>

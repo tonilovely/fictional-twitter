@@ -1,3 +1,10 @@
+// Add any interactivity here
+// For example, you can add event listeners to the tweet button to open a tweet modal
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Add event listeners for like, retweet, and reply buttons here
+    const tweetButton = document.querySelector('.tweet-button');
+    tweetButton.addEventListener('click', function() {
+        alert('Tweet button clicked!');
+        // Add functionality to open tweet modal here
+    });
 });
